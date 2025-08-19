@@ -4,247 +4,201 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AM Family</title>
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f2f6ff;
-      scroll-behavior: smooth;
+    body {margin:0;font-family:Arial, sans-serif;background:#f9f9f9;color:#333;}
+    header {
+      display:flex;justify-content:space-between;align-items:center;
+      padding:10px 20px;background:#3498db;color:#fff;
     }
-    /* Top Navbar */
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 15px;
-      background: linear-gradient(45deg, #007bff, #00c6ff);
-      color: #fff;
+    header h1 {margin:0;font-size:22px;}
+    .profile-menu {position:relative;}
+    .profile-menu button {
+      background:none;border:none;color:white;font-size:20px;cursor:pointer;
     }
-    .topbar h1 {
-      font-size: 18px;
-      margin: 0;
-      flex: 1;
-      text-align: center;
+    .profile-menu ul {
+      display:none;position:absolute;right:0;top:40px;background:#fff;
+      list-style:none;padding:10px 0;margin:0;
+      box-shadow:0 2px 8px rgba(0,0,0,0.2);border-radius:5px;width:180px;
     }
-    .topbar .logo {
-      width: 35px;
-      height: 35px;
+    .profile-menu ul li a {
+      display:block;padding:8px 15px;text-decoration:none;color:#333;
     }
-    .topbar .icons {
-      font-size: 22px;
-      cursor: pointer;
-    }
-    /* Grid Section */
+    .profile-menu ul li a:hover {background:#f0f0f0;}
+    section {padding:40px 20px;text-align:center;}
+    section h2 {font-size:24px;color:#2c3e50;}
     .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      padding: 20px;
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+      gap:15px;margin-top:20px;
     }
     .card {
-      background: #fff;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      text-align: center;
-      font-weight: bold;
-      font-size: 15px;
-      cursor: pointer;
-      transition: 0.3s;
+      background:#fff;padding:15px;border-radius:10px;
+      box-shadow:0 2px 5px rgba(0,0,0,0.1);font-weight:bold;
     }
-    .card:hover {
-      background: #e6f0ff;
+    form {
+      max-width:400px;margin:20px auto;text-align:left;background:#fff;
+      padding:20px;border-radius:10px;box-shadow:0 2px 5px rgba(0,0,0,0.1);
     }
-    /* Sections */
-    section {
-      background: #fff;
-      margin: 20px;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    form label {font-weight:bold;display:block;margin-top:10px;}
+    form input, form select {
+      width:100%;padding:10px;margin-top:5px;
+      border:1px solid #ddd;border-radius:5px;
     }
-    section h2 {
-      margin-top: 0;
-      color: #007bff;
+    form button {
+      width:100%;padding:12px;margin-top:15px;background:#25D366;
+      color:#fff;border:none;border-radius:5px;font-size:16px;cursor:pointer;
     }
-    /* Bottom Navbar */
-    .bottombar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: #fff;
-      display: flex;
-      justify-content: space-around;
-      padding: 10px 0;
-      border-top: 1px solid #ddd;
-    }
-    .bottombar a {
-      text-align: center;
-      font-size: 13px;
-      color: #444;
-      text-decoration: none;
-      font-weight: bold;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .bottombar a:hover {
-      color: #007bff;
-    }
-    .nav-logo {
-      width: 25px;
-      height: 25px;
-      margin-bottom: 4px;
-    }
-
-    /* Profile Popup */
-    .popup {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.6);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-    .popup-content {
-      background: linear-gradient(135deg, #00c6ff, #007bff);
-      padding: 20px;
-      border-radius: 15px;
-      max-width: 300px;
-      text-align: center;
-      color: #fff;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-      animation: fadeIn 0.3s ease-in-out;
-    }
-    .popup-content img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      margin-bottom: 10px;
-      border: 3px solid #fff;
-    }
-    .popup-content h3 {
-      margin: 0 0 10px;
-    }
-    .popup-content p {
-      margin: 5px 0;
-      font-size: 14px;
-    }
-    .close-btn {
-      margin-top: 12px;
-      background: #fff;
-      color: #007bff;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .close-btn:hover {
-      background: #f0f0f0;
-    }
-    @keyframes fadeIn {
-      from {opacity:0; transform:scale(0.9);}
-      to {opacity:1; transform:scale(1);}
-    }
+    form button:hover {background:#1DA851;}
+    footer {text-align:center;padding:15px;background:#2c3e50;color:#fff;margin-top:30px;}
   </style>
 </head>
 <body>
 
-  <!-- Top Navbar -->
-  <div class="topbar">
-    <div class="logo">
-      <!-- SVG Logo -->
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="45" fill="url(#grad)" />
-        <text x="50%" y="55%" text-anchor="middle" font-size="38" font-weight="bold" fill="white" font-family="Arial" dy=".3em">AM</text>
-        <defs>
-          <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#007bff; stop-opacity:1" />
-            <stop offset="100%" style="stop-color:#00c6ff; stop-opacity:1" />
-          </linearGradient>
-        </defs>
-      </svg>
-    </div>
+  <!-- Header -->
+  <header>
     <h1>AM Family</h1>
-    <div class="icons" onclick="openPopup()">👤</div>
-  </div>
-
-  <!-- Grid Section -->
-  <div class="grid">
-    <div class="card">🚀 Portfolio</div>
-    <div class="card">📝 Skills</div>
-    <div class="card">🎯 Goals</div>
-    <div class="card">📚 Blog</div>
-  </div>
-
-  <!-- About Section -->
-  <section id="about">
-    <h2>🙋 About Us</h2>
-    <p>আমরা AM Family — টেকনোলজি, ওয়েব ডেভেলপমেন্ট এবং নতুন কিছু শেখার মাধ্যমে  
-    একসাথে এগিয়ে যাওয়ার একটি কমিউনিটি।</p>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects">
-    <h2>📂 Projects</h2>
-    <ul>
-      <li>Portfolio Website</li>
-      <li>HTML/CSS Templates</li>
-      <li>Small Web Apps</li>
-    </ul>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2>📞 Contact</h2>
-    <p><b>Phone:</b> 01780641134</p>
-    <p><b>Email:</b> arjunroy1755@gmail.com</p>
-  </section>
-
-  <!-- Bottom Navbar -->
-  <div class="bottombar">
-    <a href="#about">
-      <div class="nav-logo">
-        <!-- ছোট SVG Logo -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="45" fill="url(#grad2)" />
-          <text x="50%" y="55%" text-anchor="middle" font-size="28" font-weight="bold" fill="white" font-family="Arial" dy=".3em">AM</text>
-          <defs>
-            <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style="stop-color:#007bff; stop-opacity:1" />
-              <stop offset="100%" style="stop-color:#00c6ff; stop-opacity:1" />
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
-      Home
-    </a>
-    <a href="#projects">📂 Projects</a>
-    <a href="#contact">📞 Contact</a>
-  </div>
-
-  <!-- Profile Popup -->
-  <div class="popup" id="profilePopup">
-    <div class="popup-content">
-      <img src="Arjun.jpg" alt="Profile">
-      <h3>AM Family</h3>
-      <p><b>Phone:</b> 01780641134</p>
-      <p><b>Email:</b> arjunroy1755@gmail.com</p>
-      <button class="close-btn" onclick="closePopup()">বন্ধ করুন</button>
+    <div class="profile-menu">
+      <button onclick="toggleMenu()">👤</button>
+      <ul id="profileMenu">
+        <li><a href="#profile">👤 Profile</a></li>
+        <li><a href="#userid">🆔 User ID</a></li>
+        <li><a href="#history">📜 History</a></li>
+        <li><a href="#withdraw">💸 Withdraw</a></li>
+        <li><a href="#privacy">🔒 Privacy</a></li>
+        <li><a href="#settings">⚙ Settings</a></li>
+      </ul>
     </div>
-  </div>
+  </header>
+
+  <!-- ✅ Verified Member Join (TOP এ Form) -->
+  <section id="join" style="background:#f4fff4;border-bottom:1px solid #ddd;">
+    <h2>✅ Verified Member Join</h2>
+    <p>AM Family এ verified member হতে হলে <b>250৳</b> pay করতে হবে।</p>
+    <p>
+      <b>Bkash:</b> 01780641134 (Send Money)<br>
+      <b>Nagad:</b> 01736175355<br>
+      <b>Upay:</b> 01736175355
+    </p>
+
+    <form onsubmit="sendJoinToWhatsApp(event)">
+      <label>Full Name:</label>
+      <input type="text" id="join_name" placeholder="আপনার নাম" required>
+
+      <label>Phone Number:</label>
+      <input type="text" id="join_phone" placeholder="আপনার মোবাইল নাম্বার" required>
+
+      <label>Amount (৳):</label>
+      <input type="number" id="join_amount" placeholder="250" required>
+
+      <label>Payment Method:</label>
+      <select id="join_method" required>
+        <option value="">--Select--</option>
+        <option value="Bkash">Bkash</option>
+        <option value="Nagad">Nagad</option>
+        <option value="Upay">Upay</option>
+      </select>
+
+      <label>Transaction ID:</label>
+      <input type="text" id="join_trxid" placeholder="Bkash/Nagad TrxID" required>
+
+      <button type="submit">📲 Submit & Send to WhatsApp</button>
+    </form>
+  </section>
+
+  <!-- Hero -->
+  <section id="home">
+    <h2>Earn Safely with AM Family</h2>
+    <p>Micro jobs • Social media task • Daily income</p>
+  </section>
+
+  <!-- Jobs -->
+  <section id="jobs">
+    <h2>💼 কাজের ক্যাটাগরি</h2>
+    <div class="grid">
+      <div class="card">Facebook Task</div>
+      <div class="card">YouTube Task</div>
+      <div class="card">Telegram Task</div>
+      <div class="card">App Install</div>
+      <div class="card">Survey</div>
+      <div class="card">Daily Income</div>
+    </div>
+  </section>
+
+  <!-- Withdraw Section -->
+  <section id="withdraw">
+    <h2>💸 Withdraw Request</h2>
+    <p>নিচের ফর্ম পূরণ করে Withdraw করুন</p>
+
+    <form onsubmit="sendWithdrawToWhatsApp(event)">
+      <label>Full Name:</label>
+      <input type="text" id="w_name" required>
+
+      <label>Phone Number:</label>
+      <input type="text" id="w_phone" required>
+
+      <label>Amount (৳):</label>
+      <input type="number" id="w_amount" required>
+
+      <label>Payment Method:</label>
+      <select id="w_method" required>
+        <option value="">--Select--</option>
+        <option value="Bkash">Bkash</option>
+        <option value="Nagad">Nagad</option>
+        <option value="Upay">Upay</option>
+      </select>
+
+      <label>Account / Transaction ID:</label>
+      <input type="text" id="w_account" required>
+
+      <button type="submit">📲 Submit Withdraw</button>
+    </form>
+  </section>
+
+  <footer>
+    &copy; 2025 AM Family. All Rights Reserved.
+  </footer>
 
   <script>
-    function openPopup() {
-      document.getElementById("profilePopup").style.display = "flex";
+    function toggleMenu() {
+      let menu = document.getElementById("profileMenu");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
     }
-    function closePopup() {
-      document.getElementById("profilePopup").style.display = "none";
+
+    function sendJoinToWhatsApp(event) {
+      event.preventDefault();
+      var name = document.getElementById("join_name").value;
+      var phone = document.getElementById("join_phone").value;
+      var amount = document.getElementById("join_amount").value;
+      var method = document.getElementById("join_method").value;
+      var trxid = document.getElementById("join_trxid").value;
+
+      var message = "✅ Verified Member Join Request%0A"
+                  + "Name: " + name + "%0A"
+                  + "Phone: " + phone + "%0A"
+                  + "Amount: " + amount + "৳%0A"
+                  + "Method: " + method + "%0A"
+                  + "Transaction ID: " + trxid;
+
+      var url = "https://wa.me/8801780641134?text=" + message;
+      window.open(url, "_blank");
+    }
+
+    function sendWithdrawToWhatsApp(event) {
+      event.preventDefault();
+      var name = document.getElementById("w_name").value;
+      var phone = document.getElementById("w_phone").value;
+      var amount = document.getElementById("w_amount").value;
+      var method = document.getElementById("w_method").value;
+      var account = document.getElementById("w_account").value;
+
+      var message = "💸 Withdraw Request%0A"
+                  + "Name: " + name + "%0A"
+                  + "Phone: " + phone + "%0A"
+                  + "Amount: " + amount + "৳%0A"
+                  + "Method: " + method + "%0A"
+                  + "Account/TrxID: " + account;
+
+      var url = "https://wa.me/8801780641134?text=" + message;
+      window.open(url, "_blank");
     }
   </script>
 
