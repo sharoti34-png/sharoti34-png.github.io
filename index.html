@@ -3,95 +3,250 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>অর্জুনের ব্যক্তিগত ওয়েবসাইট</title>
+  <title>AM Family</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <style>
     body {
-      font-family: "Noto Sans Bengali", sans-serif;
       margin: 0;
-      padding: 0;
-      background: linear-gradient(to right, #4facfe, #00f2fe);
-      color: #333;
+      font-family: Arial, sans-serif;
+      background: #f2f6ff;
+      scroll-behavior: smooth;
+    }
+    /* Top Navbar */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15px;
+      background: linear-gradient(45deg, #007bff, #00c6ff);
+      color: #fff;
+    }
+    .topbar h1 {
+      font-size: 18px;
+      margin: 0;
+      flex: 1;
       text-align: center;
     }
-    nav {
-      background: #333;
-      padding: 10px;
+    .topbar .logo {
+      width: 35px;
+      height: 35px;
     }
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
+    .topbar .icons {
+      font-size: 22px;
+      cursor: pointer;
     }
-    nav a:hover {
-      color: #00f2fe;
+    /* Grid Section */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      padding: 20px;
     }
     .card {
-      background: white;
-      max-width: 500px;
-      margin: 30px auto;
+      background: #fff;
       padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      text-align: center;
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .card:hover {
+      background: #e6f0ff;
+    }
+    /* Sections */
+    section {
+      background: #fff;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    section h2 {
+      margin-top: 0;
+      color: #007bff;
+    }
+    /* Bottom Navbar */
+    .bottombar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      border-top: 1px solid #ddd;
+    }
+    .bottombar a {
+      text-align: center;
+      font-size: 13px;
+      color: #444;
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .bottombar a:hover {
+      color: #007bff;
+    }
+    .nav-logo {
+      width: 25px;
+      height: 25px;
+      margin-bottom: 4px;
+    }
+
+    /* Profile Popup */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .popup-content {
+      background: linear-gradient(135deg, #00c6ff, #007bff);
+      padding: 20px;
       border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      max-width: 300px;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+      animation: fadeIn 0.3s ease-in-out;
     }
-    img {
-      width: 120px;
-      height: 120px;
+    .popup-content img {
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
-      border: 3px solid #4facfe;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
+      border: 3px solid #fff;
     }
-    h1 {
-      color: #4facfe;
+    .popup-content h3 {
+      margin: 0 0 10px;
     }
-    p {
-      font-size: 16px;
-      line-height: 1.6;
-    }
-    .contact {
-      margin-top: 20px;
-      text-align: left;
-    }
-    .contact p {
+    .popup-content p {
       margin: 5px 0;
+      font-size: 14px;
+    }
+    .close-btn {
+      margin-top: 12px;
+      background: #fff;
+      color: #007bff;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .close-btn:hover {
+      background: #f0f0f0;
+    }
+    @keyframes fadeIn {
+      from {opacity:0; transform:scale(0.9);}
+      to {opacity:1; transform:scale(1);}
     }
   </style>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
+
+  <!-- Top Navbar -->
+  <div class="topbar">
+    <div class="logo">
+      <!-- SVG Logo -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="45" fill="url(#grad)" />
+        <text x="50%" y="55%" text-anchor="middle" font-size="38" font-weight="bold" fill="white" font-family="Arial" dy=".3em">AM</text>
+        <defs>
+          <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#007bff; stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#00c6ff; stop-opacity:1" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+    <h1>AM Family</h1>
+    <div class="icons" onclick="openPopup()">👤</div>
+  </div>
+
+  <!-- Grid Section -->
+  <div class="grid">
+    <div class="card">🚀 Portfolio</div>
+    <div class="card">📝 Skills</div>
+    <div class="card">🎯 Goals</div>
+    <div class="card">📚 Blog</div>
+  </div>
 
   <!-- About Section -->
-  <div class="card">
-  <img src="Arjun.jpg" alt="Arjun Roy" width="200">
-  <h1>👋 হ্যালো, আমি অর্জুন রায়</h1>
-  <h3 style="color: gray; font-weight: normal; margin-top: -10px;">
-    Web Developer | Tech Enthusiast | Future Full-Stack Engineer
-  </h3>
-  <p>
-    আমি অর্জুন রায়, একজন উদ্যমী ও প্রযুক্তিপ্রেমী ওয়েব ডেভেলপার।  
-    আমার দক্ষতা মূলত HTML, CSS এবং JavaScript-এ, তবে আমি নিয়মিত নতুন প্রযুক্তি শেখার চেষ্টা করি।  
-    আমার লক্ষ্য হলো আধুনিক, রেসপনসিভ এবং ব্যবহারবান্ধব ওয়েবসাইট তৈরি করা।  
-    আমি সবসময় চ্যালেঞ্জ গ্রহণ করতে ভালোবাসি এবং নতুন আইডিয়া নিয়ে কাজ করতে পছন্দ করি।  
-    ভবিষ্যতে একজন পূর্ণাঙ্গ ফুল-স্ট্যাক ডেভেলপার হয়ে দেশের আইটি সেক্টরে অবদান রাখতে চাই।  
-  </p>
-  </div>
+  <section id="about">
+    <h2>🙋 About Us</h2>
+    <p>আমরা AM Family — টেকনোলজি, ওয়েব ডেভেলপমেন্ট এবং নতুন কিছু শেখার মাধ্যমে  
+    একসাথে এগিয়ে যাওয়ার একটি কমিউনিটি।</p>
+  </section>
 
   <!-- Projects Section -->
-  <div class="card" id="projects">
-    <h2>🚀 আমার প্রোজেক্টসমূহ</h2>
-    <p>এখানে শিগগিরই আমার কাজগুলো আপডেট করা হবে।</p>
-  </div>
+  <section id="projects">
+    <h2>📂 Projects</h2>
+    <ul>
+      <li>Portfolio Website</li>
+      <li>HTML/CSS Templates</li>
+      <li>Small Web Apps</li>
+    </ul>
+  </section>
 
   <!-- Contact Section -->
-  <div class="card" id="contact">
-    <h2>📞 যোগাযোগ</h2>
+  <section id="contact">
+    <h2>📞 Contact</h2>
     <p><b>Phone:</b> 01780641134</p>
     <p><b>Email:</b> arjunroy1755@gmail.com</p>
+  </section>
+
+  <!-- Bottom Navbar -->
+  <div class="bottombar">
+    <a href="#about">
+      <div class="nav-logo">
+        <!-- ছোট SVG Logo -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="45" fill="url(#grad2)" />
+          <text x="50%" y="55%" text-anchor="middle" font-size="28" font-weight="bold" fill="white" font-family="Arial" dy=".3em">AM</text>
+          <defs>
+            <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#007bff; stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#00c6ff; stop-opacity:1" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      Home
+    </a>
+    <a href="#projects">📂 Projects</a>
+    <a href="#contact">📞 Contact</a>
   </div>
+
+  <!-- Profile Popup -->
+  <div class="popup" id="profilePopup">
+    <div class="popup-content">
+      <img src="Arjun.jpg" alt="Profile">
+      <h3>AM Family</h3>
+      <p><b>Phone:</b> 01780641134</p>
+      <p><b>Email:</b> arjunroy1755@gmail.com</p>
+      <button class="close-btn" onclick="closePopup()">বন্ধ করুন</button>
+    </div>
+  </div>
+
+  <script>
+    function openPopup() {
+      document.getElementById("profilePopup").style.display = "flex";
+    }
+    function closePopup() {
+      document.getElementById("profilePopup").style.display = "none";
+    }
+  </script>
+
 </body>
 </html>
