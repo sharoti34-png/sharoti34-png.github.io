@@ -1,279 +1,143 @@
-<!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AM FAMILY</title>
+  <title>AM Family</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f4f8fb;
+    body {margin:0;font-family:Arial, sans-serif;background:#f4f4f4;}
+    header {
+      display:flex;justify-content:space-between;align-items:center;
+      background:#3498db;color:#fff;padding:15px;
     }
-
-    /* Header */
-    .main-header {
-      background: #3498db;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-      position: relative;
+    header h1 {margin:0;font-size:24px;text-align:center;flex:1;}
+    header small {display:block;font-size:12px;color:#eee;}
+    .profile-menu {position:relative;}
+    .profile-menu button {
+      background:none;border:none;color:#fff;font-size:22px;cursor:pointer;
     }
-    .main-header h1 {
-      margin: 0;
-      font-size: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+    .profile-menu ul {
+      list-style:none;position:absolute;right:0;top:40px;background:#fff;
+      padding:0;margin:0;width:180px;border-radius:5px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.2);display:none;
     }
-    .owner-text {
-      font-size: 14px;
-      margin: 5px 0 0 0;
-      color: #f1f1f1;
-      font-style: italic;
+    .profile-menu ul li {border-bottom:1px solid #ddd;}
+    .profile-menu ul li a {
+      display:block;padding:10px;color:#333;text-decoration:none;
     }
-
-    /* Logo */
-    .logo {
-      width: 40px;
-      height: 40px;
+    .profile-menu ul li a:hover {background:#3498db;color:#fff;}
+    .container {max-width:600px;margin:20px auto;padding:20px;}
+    .card {
+      background:#fff;padding:20px;border-radius:8px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.1);margin-bottom:20px;
     }
-
-    /* Options Menu (3 Dots) */
-    .menu-btn {
-      position: absolute;
-      right: 20px;
-      top: 20px;
-      font-size: 24px;
-      cursor: pointer;
+    h2 {margin-top:0;}
+    form label {display:block;margin:8px 0 4px;}
+    form input, form select {
+      width:100%;padding:10px;border:1px solid #ccc;border-radius:5px;
     }
-    .dropdown {
-      display: none;
-      position: absolute;
-      right: 20px;
-      top: 50px;
-      background: #fff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-      border-radius: 8px;
-      overflow: hidden;
+    form button {
+      margin-top:15px;width:100%;padding:12px;background:#2ecc71;
+      color:#fff;border:none;border-radius:5px;font-size:16px;cursor:pointer;
     }
-    .dropdown a {
-      display: block;
-      padding: 10px 20px;
-      color: #333;
-      text-decoration: none;
-    }
-    .dropdown a:hover {
-      background: #f1f1f1;
-    }
-
-    /* Verified Member Button */
-    .verified-btn {
-      display: block;
-      margin: 20px auto;
-      padding: 12px 20px;
-      background: #2ecc71;
-      color: white;
-      font-size: 18px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      width: 80%;
-      max-width: 300px;
-    }
-
-    /* Sections */
-    section {
-      padding: 30px 20px;
-      display: none;
-    }
-    section.active {
-      display: block;
-    }
-    h2 {
-      margin-top: 0;
-    }
-
-    /* Task Cards */
-    .task {
-      background: #fff;
-      margin: 10px auto;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      max-width: 400px;
-      text-align: left;
-    }
-
-    /* Forms */
-    form {
-      max-width: 400px;
-      margin: auto;
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    label {
-      display: block;
-      margin: 10px 0 5px;
-    }
-    input, select, button {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
-    button {
-      background: #3498db;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #2980b9;
-    }
+    form button:hover {background:#27ae60;}
   </style>
 </head>
 <body>
 
   <!-- Header -->
-  <header class="main-header">
-    <h1>
-      <!-- SVG Logo -->
-      <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-        <path d="M12 2L2 7h20L12 2zm0 2.2l6.6 3.3H5.4L12 4.2zM2 9v11h20V9l-10 5L2 9z"/>
-      </svg>
-      AM FAMILY
-    </h1>
-    <p class="owner-text">Owner: MR AM</p>
-    <div class="menu-btn" onclick="toggleMenu()">⋮</div>
-    <div class="dropdown" id="dropdownMenu">
-      <a href="#" onclick="showSection('profile')">👤 Profile</a>
-      <a href="#" onclick="showSection('withdraw')">💸 Withdraw</a>
-      <a href="#" onclick="showSection('history')">📜 History</a>
-      <a href="#" onclick="showSection('privacy')">🔒 Privacy</a>
-      <a href="#" onclick="showSection('settings')">⚙ Settings</a>
+  <header>
+    <h1>AM FAMILY <br><small>Owner: MR AM</small></h1>
+    <div class="profile-menu">
+      <button onclick="toggleMenu()">👤</button>
+      <ul id="profileMenu">
+        <li><a href="#profile">👤 Profile</a></li>
+        <li><a href="#userid">🆔 User ID</a></li>
+        <li><a href="#history">📜 History</a></li>
+        <li><a href="#withdraw">💸 Withdraw</a></li>
+        <li><a href="#privacy">🔒 Privacy</a></li>
+        <li><a href="#settings">⚙️ Settings</a></li>
+      </ul>
     </div>
   </header>
 
-  <!-- Verified Member Join -->
-  <button class="verified-btn" onclick="showSection('verified')">✅ Verified Member Join</button>
+  <div class="container">
 
-  <!-- Home Section (Tasks) -->
-  <section id="home" class="active">
-    <h2>📋 আজকের কাজ</h2>
-    <div class="task">
-      <h3>✅ Task 1: Watch Video</h3>
-      <p>Earn: 10৳</p>
+    <!-- Verified Member Join -->
+    <div class="card" id="join">
+      <h2>✅ Verified Member Join</h2>
+      <p>AM Family এ verified member হতে হলে 250৳ pay করতে হবে।</p>
+      <p><b>Bkash:</b> 01780641134 (Send Money) <br>
+         <b>Nagad:</b> 01736175355 <br>
+         <b>Upay:</b> 01736175355</p>
+
+      <form>
+        <label>Full Name:</label>
+        <input type="text" placeholder="আপনার নাম" required>
+
+        <label>Phone Number:</label>
+        <input type="text" placeholder="মোবাইল নাম্বার" required>
+
+        <label>Amount (৳):</label>
+        <input type="number" value="250" required>
+
+        <label>Payment Method:</label>
+        <select required>
+          <option value="">--Select--</option>
+          <option>Bkash</option>
+          <option>Nagad</option>
+          <option>Upay</option>
+        </select>
+
+        <label>Transaction ID:</label>
+        <input type="text" placeholder="Bkash/Nagad TrxID" required>
+
+        <button type="submit">📲 Submit & Send to WhatsApp</button>
+      </form>
     </div>
-    <div class="task">
-      <h3>✅ Task 2: Share Post</h3>
-      <p>Earn: 5৳</p>
+
+    <!-- Withdraw Section -->
+    <div class="card" id="withdraw">
+      <h2>💸 Withdraw Request</h2>
+      <p>নিচের ফর্ম পূরণ করে Withdraw করুন:</p>
+
+      <form>
+        <label>Full Name:</label>
+        <input type="text" required>
+
+        <label>Phone Number:</label>
+        <input type="text" required>
+
+        <label>Amount (৳):</label>
+        <input type="number" required>
+
+        <label>Payment Method:</label>
+        <select required>
+          <option value="">--Select--</option>
+          <option>Bkash</option>
+          <option>Nagad</option>
+          <option>Upay</option>
+        </select>
+
+        <label>Account / Transaction ID:</label>
+        <input type="text" required>
+
+        <button type="submit">📲 Submit Withdraw</button>
+      </form>
     </div>
-    <div class="task">
-      <h3>✅ Task 3: Complete Survey</h3>
-      <p>Earn: 20৳</p>
-    </div>
-  </section>
 
-  <!-- Verified Member Section -->
-  <section id="verified">
-    <h2>✅ Verified Member Join</h2>
-    <form onsubmit="sendJoin(event)">
-      <label>Full Name:</label>
-      <input type="text" id="v_name" required>
-      <label>Phone Number:</label>
-      <input type="text" id="v_phone" required>
-      <label>Amount (৳):</label>
-      <input type="number" id="v_amount" required>
-      <label>Payment Method:</label>
-      <select id="v_method" required>
-        <option value="">--Select--</option>
-        <option value="Bkash">Bkash</option>
-        <option value="Nagad">Nagad</option>
-        <option value="Upay">Upay</option>
-      </select>
-      <label>Transaction ID:</label>
-      <input type="text" id="v_trx" required>
-      <button type="submit">📲 Submit</button>
-    </form>
-  </section>
+  </div>
 
-  <!-- Withdraw Section -->
-  <section id="withdraw">
-    <h2>💸 Withdraw</h2>
-    <form>
-      <label>Phone Number:</label>
-      <input type="text" required>
-      <label>Amount (৳):</label>
-      <input type="number" required>
-      <label>Payment Method:</label>
-      <select required>
-        <option value="">--Select--</option>
-        <option>Bkash</option>
-        <option>Nagad</option>
-        <option>Upay</option>
-      </select>
-      <label>Transaction ID:</label>
-      <input type="text" required>
-      <button type="submit">✅ Withdraw Request</button>
-    </form>
-  </section>
-
-  <!-- Profile Section -->
-  <section id="profile">
-    <h2>👤 My Profile</h2>
-    <p><b>Name:</b> Demo User</p>
-    <p><b>User ID:</b> AM12345</p>
-    <p><b>Phone:</b> 017xxxxxxxx</p>
-    <p><b>Balance:</b> 0৳</p>
-  </section>
-
-  <!-- History Section -->
-  <section id="history">
-    <h2>📜 Task History</h2>
-    <p>No tasks completed yet.</p>
-  </section>
-
-  <!-- Privacy Section -->
-  <section id="privacy">
-    <h2>🔒 Privacy Policy</h2>
-    <p>We never share your personal information. Your data is safe in AM FAMILY platform.</p>
-  </section>
-
-  <!-- Settings Section -->
-  <section id="settings">
-    <h2>⚙ Settings</h2>
-    <p>Coming soon...</p>
-  </section>
+  <footer style="text-align:center;padding:10px;background:#333;color:#fff;">
+    © 2025 AM Family. All Rights Reserved.
+  </footer>
 
   <script>
-    function toggleMenu() {
-      let menu = document.getElementById("dropdownMenu");
-      menu.style.display = (menu.style.display === "block") ? "none" : "block";
-    }
-
-    function showSection(id) {
-      let sections = document.querySelectorAll("section");
-      sections.forEach(sec => sec.classList.remove("active"));
-      document.getElementById(id).classList.add("active");
-      document.getElementById("dropdownMenu").style.display = "none";
-    }
-
-    function sendJoin(e){
-      e.preventDefault();
-      let name = document.getElementById("v_name").value;
-      let phone = document.getElementById("v_phone").value;
-      let amount = document.getElementById("v_amount").value;
-      let method = document.getElementById("v_method").value;
-      let trx = document.getElementById("v_trx").value;
-      let msg = `Verified Join Request%0AName: ${name}%0APhone: ${phone}%0AAmount: ${amount}%0AMethod: ${method}%0ATrxID: ${trx}`;
-      window.open(`https://wa.me/8801780641134?text=${msg}`, "_blank");
+    function toggleMenu(){
+      let menu=document.getElementById("profileMenu");
+      menu.style.display = menu.style.display==="block" ? "none":"block";
     }
   </script>
+
 </body>
 </html>
