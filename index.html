@@ -1,42 +1,192 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>আমার প্রথম ওয়েবসাইট</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>আমার প্রোফাইল</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(120deg, #89f7fe, #66a6ff);
-      text-align: center;
-      padding: 50px;
-      color: #333;
+    /* ========= Soho Minimal Palette (তোমার পছন্দমতো বদলাতে পারো) ========= */
+    :root{
+      --bg1:#f6f7fb;           /* পেজ ব্যাকগ্রাউন্ড */
+      --bg2:#eef2ff;           /* হালকা নীল-লাইলাক */
+      --card:#ffffff;          /* কার্ড রঙ */
+      --text:#1f2937;          /* টাইটেল/বডি টেক্সট */
+      --muted:#6b7280;         /* হালকা টেক্সট */
+      --accent:#7c3aed;        /* প্রধান অ্যাকসেন্ট (Soho vibe) */
+      --accent-2:#06b6d4;      /* সেকেন্ডারি অ্যাকসেন্ট */
+      --shadow: 0 10px 30px rgba(31,41,55,.12);
+      --radius: 22px;
     }
-    h1 {
-      font-size: 40px;
-      color: #222;
+
+    *{ box-sizing: border-box; }
+    html,body{
+      height:100%;
+      margin:0;
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 10% 10%, var(--bg2), transparent 60%),
+        radial-gradient(900px 500px at 90% 0%, #e9ffe9, transparent 50%),
+        linear-gradient(180deg, var(--bg1), #ffffff);
     }
-    p {
-      font-size: 20px;
+
+    .wrap{
+      min-height:100dvh;
+      display:grid;
+      place-items:center;
+      padding:32px 18px;
     }
-    a {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 25px;
-      background: #333;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: 0.3s;
+
+    .card{
+      width:min(720px, 100%);
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(24px, 5vw, 48px);
+      position:relative;
+      overflow:hidden;
+      isolation:isolate;
     }
-    a:hover {
-      background: #555;
+
+    /* আকর্ষণীয় ব্লার্ড অ্যাকসেন্ট */
+    .card::before, .card::after{
+      content:"";
+      position:absolute;
+      filter: blur(48px);
+      opacity:.25;
+      z-index:-1;
+      border-radius:50%;
+    }
+    .card::before{
+      width:260px;height:260px; left:-60px; top:-60px;
+      background:radial-gradient(circle at 30% 30%, var(--accent), transparent 60%);
+    }
+    .card::after{
+      width:300px;height:300px; right:-70px; bottom:-80px;
+      background:radial-gradient(circle at 70% 70%, var(--accent-2), transparent 60%);
+    }
+
+    .badge{
+      display:inline-block;
+      font-size:12px; letter-spacing:.08em;
+      text-transform:uppercase;
+      color:white;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      padding:8px 12px; border-radius:999px;
+      box-shadow: 0 6px 18px rgba(124,58,237,.35);
+    }
+
+    h1{
+      font-size: clamp(28px, 5vw, 44px);
+      line-height:1.1;
+      margin:16px 0 10px;
+      letter-spacing:-.02em;
+    }
+
+    .sub{
+      color:var(--muted);
+      font-size: clamp(15px, 2.5vw, 18px);
+      margin-bottom: 26px;
+    }
+
+    .info{
+      display:grid; gap:14px;
+      margin: 22px 0 8px;
+    }
+    .info div{
+      display:flex; gap:10px; align-items:center;
+      font-size:16px;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 0 4px rgba(124,58,237,.12);
+      flex:none;
+    }
+
+    .cta{
+      display:flex; flex-wrap:wrap; gap:12px;
+      margin-top:28px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:12px 18px; border-radius:14px;
+      text-decoration:none; font-weight:600;
+      transition: transform .18s ease, box-shadow .18s ease, background .2s;
+      will-change: transform;
+    }
+    .btn-primary{
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color:#fff; box-shadow: 0 10px 22px rgba(6,182,212,.25);
+    }
+    .btn-primary:hover{ transform: translateY(-2px); }
+
+    .btn-ghost{
+      background:#f4f5f7; color:#111827;
+      border:1px solid #e5e7eb;
+    }
+    .btn-ghost:hover{ transform: translateY(-2px); box-shadow: 0 8px 18px rgba(31,41,55,.08); }
+
+    footer{
+      margin-top: 26px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* ছোট স্ক্রিন টিউন */
+    @media (max-width:420px){
+      .cta{gap:10px}
+      .btn{width:100%}
     }
   </style>
 </head>
 <body>
-  <h1>🚀 হ্যালো বিশ্ব!</h1>
-  <p>এটা আমার প্রথম GitHub Pages ওয়েবসাইট।</p>
-  <a href="https://github.com/sharoti34-png" target="_blank">আমার GitHub প্রোফাইল</a>
+  <main class="wrap">
+    <section class="card" aria-labelledby="title">
+      <span class="badge">Portfolio • Contact</span>
+
+      <!-- TODO: এখানে তোমার নাম বসাও -->
+      <h1 id="title">Arjun Roy</h1>
+
+      <!-- TODO: চাইলে নিজের সম্পর্কে এক লাইন লিখে দাও -->
+      <p class="sub">👋 হ্যালো! আমি অর্জুন।
+আমি সবসময় নতুন কিছু শিখতে ভালোবাসি এবং টেকনোলজির প্রতি আমার বিশেষ আগ্রহ আছে।
+ফাঁকা সময়ে আমি ওয়েবসাইট তৈরি, ডিজাইন করা এবং নতুন আইডিয়া নিয়ে কাজ করতে পছন্দ করি।
+ভবিষ্যতে নিজেকে একজন দক্ষ ওয়েব ডেভেলপার হিসেবে গড়ে তুলতে চাই।
+
+📞 যোগাযোগ: 01780641134
+📧 ইমেইল: arjunroy1755@gmail.com</p>
+
+      <div class="info">
+        <!-- TODO: এখানে ফোন নাম্বার বসাও -->
+        <div><span class="dot"></span> ফোন: <strong>+880 1780641134</strong></div>
+
+        <!-- TODO: এখানে তোমার Gmail বসাও -->
+        <div><span class="dot"></span> ইমেইল: <strong>arjunroy1755@gmail.com</strong></div>
+
+        <!-- চাইলে আরও যুক্ত করো -->
+        <div><span class="dot"></span> অবস্থান: <strong>Rangpur, Bangladesh</strong></div>
+      </div>
+
+      <div class="cta">
+        <!-- tel: এবং mailto: এ একই ফোন/ইমেইল বসাও -->
+        <a class="btn btn-primary" href="tel:+8801780641134">এখনই কল করুন</a>
+        <a class="btn btn-ghost" href="mailto:arjunroy1755@gmail.com?subject=Hello%20from%20your%20site">ইমেইল পাঠান</a>
+        <a class="btn btn-ghost" href="https://github.com/sharoti34-png" target="_blank" rel="noopener">GitHub প্রোফাইল</a>
+      </div>
+
+      <footer>© <span id="y"></span> তোমার নাম — Arjun Roy</footer>
+    </section>
+  </main>
+
+  <script>
+    // বছর অটো-আপডেট
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
