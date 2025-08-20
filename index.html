@@ -1,143 +1,32 @@
-   <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AM Family</title>
-  <style>
-    body {margin:0;font-family:Arial, sans-serif;background:#f4f4f4;}
-    header {
-      display:flex;justify-content:space-between;align-items:center;
-      background:#3498db;color:#fff;padding:15px;
-    }
-    header h1 {margin:0;font-size:24px;text-align:center;flex:1;}
-    header small {display:block;font-size:12px;color:#eee;}
-    .profile-menu {position:relative;}
-    .profile-menu button {
-      background:none;border:none;color:#fff;font-size:22px;cursor:pointer;
-    }
-    .profile-menu ul {
-      list-style:none;position:absolute;right:0;top:40px;background:#fff;
-      padding:0;margin:0;width:180px;border-radius:5px;
-      box-shadow:0 2px 8px rgba(0,0,0,0.2);display:none;
-    }
-    .profile-menu ul li {border-bottom:1px solid #ddd;}
-    .profile-menu ul li a {
-      display:block;padding:10px;color:#333;text-decoration:none;
-    }
-    .profile-menu ul li a:hover {background:#3498db;color:#fff;}
-    .container {max-width:600px;margin:20px auto;padding:20px;}
-    .card {
-      background:#fff;padding:20px;border-radius:8px;
-      box-shadow:0 2px 6px rgba(0,0,0,0.1);margin-bottom:20px;
-    }
-    h2 {margin-top:0;}
-    form label {display:block;margin:8px 0 4px;}
-    form input, form select {
-      width:100%;padding:10px;border:1px solid #ccc;border-radius:5px;
-    }
-    form button {
-      margin-top:15px;width:100%;padding:12px;background:#2ecc71;
-      color:#fff;border:none;border-radius:5px;font-size:16px;cursor:pointer;
-    }
-    form button:hover {background:#27ae60;}
-  </style>
+  <title>AM FAMILY</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- Header -->
   <header>
-    <h1>AM FAMILY <br><small>Owner: MR AM</small></h1>
-    <div class="profile-menu">
-      <button onclick="toggleMenu()">👤</button>
-      <ul id="profileMenu">
-        <li><a href="#profile">👤 Profile</a></li>
-        <li><a href="#userid">🆔 User ID</a></li>
-        <li><a href="#history">📜 History</a></li>
-        <li><a href="#withdraw">💸 Withdraw</a></li>
-        <li><a href="#privacy">🔒 Privacy</a></li>
-        <li><a href="#settings">⚙️ Settings</a></li>
-      </ul>
-    </div>
+    <h1>🌟 AM FAMILY 🌟</h1>
+    <p>Owner: MR AM</p>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="#">Rules</a>
+    </nav>
   </header>
 
-  <div class="container">
+  <main>
+    <section class="intro">
+      <h2>স্বাগতম!</h2>
+      <p>এখানে সবাই ওয়েবসাইট দেখতে পারবে, কিন্তু Verified Member হলে তবেই কাজ করতে পারবে।</p>
+      <a class="btn" href="dashboard.html">Verified Member Login</a>
+    </section>
+  </main>
 
-    <!-- Verified Member Join -->
-    <div class="card" id="join">
-      <h2>✅ Verified Member Join</h2>
-      <p>AM Family এ verified member হতে হলে 250৳ pay করতে হবে।</p>
-      <p><b>Bkash:</b> 01780641134 (Send Money) <br>
-         <b>Nagad:</b> 01736175355 <br>
-         <b>Upay:</b> 01736175355</p>
-
-      <form>
-        <label>Full Name:</label>
-        <input type="text" placeholder="আপনার নাম" required>
-
-        <label>Phone Number:</label>
-        <input type="text" placeholder="মোবাইল নাম্বার" required>
-
-        <label>Amount (৳):</label>
-        <input type="number" value="250" required>
-
-        <label>Payment Method:</label>
-        <select required>
-          <option value="">--Select--</option>
-          <option>Bkash</option>
-          <option>Nagad</option>
-          <option>Upay</option>
-        </select>
-
-        <label>Transaction ID:</label>
-        <input type="text" placeholder="Bkash/Nagad TrxID" required>
-
-        <button type="submit">📲 Submit & Send to WhatsApp</button>
-      </form>
-    </div>
-
-    <!-- Withdraw Section -->
-    <div class="card" id="withdraw">
-      <h2>💸 Withdraw Request</h2>
-      <p>নিচের ফর্ম পূরণ করে Withdraw করুন:</p>
-
-      <form>
-        <label>Full Name:</label>
-        <input type="text" required>
-
-        <label>Phone Number:</label>
-        <input type="text" required>
-
-        <label>Amount (৳):</label>
-        <input type="number" required>
-
-        <label>Payment Method:</label>
-        <select required>
-          <option value="">--Select--</option>
-          <option>Bkash</option>
-          <option>Nagad</option>
-          <option>Upay</option>
-        </select>
-
-        <label>Account / Transaction ID:</label>
-        <input type="text" required>
-
-        <button type="submit">📲 Submit Withdraw</button>
-      </form>
-    </div>
-
-  </div>
-
-  <footer style="text-align:center;padding:10px;background:#333;color:#fff;">
-    © 2025 AM Family. All Rights Reserved.
+  <footer>
+    <p>© 2025 AM FAMILY | All Rights Reserved</p>
   </footer>
-
-  <script>
-    function toggleMenu(){
-      let menu=document.getElementById("profileMenu");
-      menu.style.display = menu.style.display==="block" ? "none":"block";
-    }
-  </script>
-
 </body>
 </html>
